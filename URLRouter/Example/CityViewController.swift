@@ -1,5 +1,5 @@
 //
-//  TopicDetailViewController.swift
+//  CityViewController.swift
 //  URLRouter
 //
 //  Created by wanggang on 09/11/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopicDetailViewController: UIViewController {
+class CityViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
