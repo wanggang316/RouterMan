@@ -8,12 +8,28 @@
 
 import UIKit
 
-class CityViewController: UIViewController {
+class CityViewController: UIViewController, URLRoutable {
+    
+    // MARK: - URLRoutable
+    convenience required init?(url: URLConvertible) {
+        self.init()
+        print(url)
+        let params = url.urlValue?.queryParameters
+        let title = params?["name"]
+        self.title = title
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.groupTableViewBackground
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,12 +18,26 @@ struct RouteMap {
 
         URLRouter.default.map("tel:[^\\s]+", handler: { (url) in
             print("------> \(url)")
+            UIApplication.shared.open(url.urlValue!)
             return true
         })
 
-        URLRouter.default.map("zbj://alert?title=\\w+&message=\\w+", handler: { (url) in
+        URLRouter.default.map("abc://alert\\?title=\\w+&message=\\w+", handler: { (url) in
+        
             print("------> \(url)")
+            let params = url.urlValue?.queryParameters
+            let title = params?["title"]
+            let message = params?["message"]
+            
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
+            
+            let appdelegate = UIApplication.shared.delegate as? AppDelegate
+            appdelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            
             return true
         })
+        
     }
+    
 }
