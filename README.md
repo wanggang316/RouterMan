@@ -2,7 +2,7 @@
 ## ZBJCalendar [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/wanggang316/URLRouter/master/LICENSE) [![Cocoapods](https://img.shields.io/cocoapods/v/URLRouter.svg)](https://cocoapods.org/?q=zbjcALENDAR)  
 
 
-> URLRouter is a url manager based regular expressions, it is inspired by [URLNavigator](https://github.com/devxoul/URLNavigator). But i don't like the `URLMatcher` in `URLNavigatorl. I like regular expressions which is smaller but stronger.
+> URLRouter is a url manager based regular expressions, it is inspired by [URLNavigator](https://github.com/devxoul/URLNavigator). But i don't like the `URLMatcher` in `URLNavigator`. I like regular expressions which is smaller but stronger.
 
 > Thanks [devxoul](https://github.com/devxoul) for the excellent projects he opend.
 
