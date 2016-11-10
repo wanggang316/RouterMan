@@ -17,8 +17,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/wanggang316/URLRouter.git", :tag => s.version }
 
-  s.source_files  = "URLRouter/URLRouter/*.{h,m}"
-  s.exclude_files = "URLRouter/URLRouter/*.h"
+  s.source_files  = "URLRouter/URLRouter/*.swift"
 
 
 end
