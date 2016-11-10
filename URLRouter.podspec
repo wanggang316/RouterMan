@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.summary      = "A lightweight swift URL manager based regular expressions."
   s.homepage     = "https://github.com/wanggang316/URLRouter"
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
 
   s.author             = { "gump" => "gummpwang@gmail.com" }
   s.social_media_url   = "http://twitter.com/wgang316"
