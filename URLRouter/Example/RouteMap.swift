@@ -18,7 +18,7 @@ struct RouteMap {
 
         URLRouter.default.map("tel:[^\\s]+", handler: { (url) in
             print("------> \(url)")
-            UIApplication.shared.open(url.urlValue!)
+            UIApplication.shared.openURL(url.urlValue!)
             return true
         })
 
