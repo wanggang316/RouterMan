@@ -24,14 +24,14 @@
 
 * Registe a class which is implements the `URLRoutable` protocol
 
-```
+``` swift
 URLRouter.default.map("abc://page/city/\\d+\\?name=\\w+", routable: CityViewController.self)
 URLRouter.default.map("abc://page/user/\\d+", routable: UserViewController.self)
 ```
 
 * Registe a handler closure
 
-```
+``` swift
 URLRouter.default.map("tel:[^\\s]+", handler: { (url) in
     UIApplication.shared.open(url.urlValue!)
     return true
@@ -57,13 +57,13 @@ URLRouter.default.map("abc://alert\\?title=\\w+&message=\\w+", handler: { (url) 
 
 * handler via push or present action
 
-```
+``` swift
 URLRouter.default.push(url, from: self.navigationController!)
 ```
 
 * handle via the closure
 
-```
+``` swift
 URLRouter.default.open(url)
 ```
 
