@@ -68,7 +68,7 @@
 		33DF87B41DD3400100538D3A /* URLRouter */ = {
 			isa = PBXGroup;
 			children = (
-				33DF87D11DD3426A00538D3A /* URLRoute */,
+				33DF87D11DD3426A00538D3A /* URLRouter */,
 				33DF87D61DD3427600538D3A /* Example */,
 				33DF87B51DD3400100538D3A /* AppDelegate.swift */,
 				33DF87B91DD3400100538D3A /* Main.storyboard */,
@@ -79,13 +79,13 @@
 			path = URLRouter;
 			sourceTree = "<group>";
 		};
-		33DF87D11DD3426A00538D3A /* URLRoute */ = {
+		33DF87D11DD3426A00538D3A /* URLRouter */ = {
 			isa = PBXGroup;
 			children = (
 				33DF87D21DD3426A00538D3A /* URLConvertible.swift */,
 				33DF87D31DD3426A00538D3A /* URLRouter.swift */,
 			);
-			path = URLRoute;
+			path = URLRouter;
 			sourceTree = "<group>";
 		};
 		33DF87D61DD3427600538D3A /* Example */ = {
@@ -344,6 +344,7 @@
 				33DF87C61DD3400100538D3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
