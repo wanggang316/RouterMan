@@ -16,8 +16,12 @@ class UserViewController: UIViewController, URLRoutable {
         self.init()
         print(url)
     }
+    required convenience init(_ parameters: [String : Any]) {
+        self.init()
+        print("init parameters: \(parameters)")
+    }
     
-    init() {
+    required init() {
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder) {
@@ -34,16 +38,20 @@ class UserViewController: UIViewController, URLRoutable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension UserViewController: RoutableControllerType {
+    static var pattern: String {
+        return "abc://page/user/\\d+"
     }
-    */
-
+    
+    func steupController(_ parameters: [String : Any]) {
+        print("parameters: \(parameters)")
+    }
+    
+//    convenience init(_ parameters: [String: Any]) {
+//        self.init()
+//    }
+    
 }

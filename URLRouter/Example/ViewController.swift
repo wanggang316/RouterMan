@@ -54,11 +54,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.items[indexPath.row]
-        
-        let hasHander = URLRouter.default.open(item)
-        if !hasHander {
-            URLRouter.default.push(item, from: self.navigationController!)
-        }
+
+        URLRouter.default.handle(item)
+//        let hasHander = URLRouter.default.open(item)
+//        if !hasHander {
+//            URLRouter.default.push(item, from: self.navigationController!)
+//        }
         
     }
 
