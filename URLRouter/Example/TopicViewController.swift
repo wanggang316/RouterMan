@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopicViewController: UIViewController, URLRoutable {
+class TopicViewController: UIViewController {
 
     
     // MARK: - URLRoutable

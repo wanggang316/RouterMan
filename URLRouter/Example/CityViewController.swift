@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityViewController: UIViewController, URLRoutable {
+class CityViewController: UIViewController {
     
     // MARK: - URLRoutable
     convenience required init?(url: URLConvertible) {

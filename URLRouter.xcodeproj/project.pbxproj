@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2344BB46218DE8E2008CA621 /* RoutableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB45218DE8E2008CA621 /* RoutableType.swift */; };
+		2344BB48218DF1DA008CA621 /* URLRewriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB47218DF1DA008CA621 /* URLRewriter.swift */; };
+		2344BB4A218DF494008CA621 /* UIWindow+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */; };
 		23BC7AD12185826200A31E30 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC7AD02185826200A31E30 /* StoryViewController.swift */; };
 		33DF87B61DD3400100538D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87B51DD3400100538D3A /* AppDelegate.swift */; };
 		33DF87BB1DD3400100538D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DF87B91DD3400100538D3A /* Main.storyboard */; };
 		33DF87BD1DD3400100538D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33DF87BC1DD3400100538D3A /* Assets.xcassets */; };
 		33DF87C01DD3400100538D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DF87BE1DD3400100538D3A /* LaunchScreen.storyboard */; };
 		33DF87D41DD3426A00538D3A /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87D21DD3426A00538D3A /* URLConvertible.swift */; };
-		33DF87D51DD3426A00538D3A /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87D31DD3426A00538D3A /* URLRouter.swift */; };
+		33DF87D51DD3426A00538D3A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87D31DD3426A00538D3A /* Router.swift */; };
 		33DF87DC1DD3428F00538D3A /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87D71DD3428F00538D3A /* CityListViewController.swift */; };
 		33DF87DE1DD3428F00538D3A /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87D91DD3428F00538D3A /* TopicViewController.swift */; };
 		33DF87DF1DD3428F00538D3A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DF87DA1DD3428F00538D3A /* UserViewController.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2344BB45218DE8E2008CA621 /* RoutableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutableType.swift; sourceTree = "<group>"; };
+		2344BB47218DF1DA008CA621 /* URLRewriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRewriter.swift; sourceTree = "<group>"; };
+		2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+TopViewController.swift"; sourceTree = "<group>"; };
 		23BC7AD02185826200A31E30 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		33DF87B21DD3400100538D3A /* URLRouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLRouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DF87B51DD3400100538D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +37,7 @@
 		33DF87BF1DD3400100538D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33DF87C11DD3400100538D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33DF87D21DD3426A00538D3A /* URLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConvertible.swift; sourceTree = "<group>"; };
-		33DF87D31DD3426A00538D3A /* URLRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
+		33DF87D31DD3426A00538D3A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		33DF87D71DD3428F00538D3A /* CityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		33DF87D91DD3428F00538D3A /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		33DF87DA1DD3428F00538D3A /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +90,11 @@
 		33DF87D11DD3426A00538D3A /* URLRouter */ = {
 			isa = PBXGroup;
 			children = (
+				33DF87D31DD3426A00538D3A /* Router.swift */,
+				2344BB45218DE8E2008CA621 /* RoutableType.swift */,
 				33DF87D21DD3426A00538D3A /* URLConvertible.swift */,
-				33DF87D31DD3426A00538D3A /* URLRouter.swift */,
+				2344BB47218DF1DA008CA621 /* URLRewriter.swift */,
+				2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */,
 			);
 			path = URLRouter;
 			sourceTree = "<group>";
@@ -180,11 +189,14 @@
 				23BC7AD12185826200A31E30 /* StoryViewController.swift in Sources */,
 				33DF87DF1DD3428F00538D3A /* UserViewController.swift in Sources */,
 				33DF87E41DD3440F00538D3A /* CityViewController.swift in Sources */,
+				2344BB48218DF1DA008CA621 /* URLRewriter.swift in Sources */,
+				2344BB46218DE8E2008CA621 /* RoutableType.swift in Sources */,
 				33DF87D41DD3426A00538D3A /* URLConvertible.swift in Sources */,
 				33DF87E21DD3435100538D3A /* RouteMap.swift in Sources */,
-				33DF87D51DD3426A00538D3A /* URLRouter.swift in Sources */,
+				33DF87D51DD3426A00538D3A /* Router.swift in Sources */,
 				33DF87DE1DD3428F00538D3A /* TopicViewController.swift in Sources */,
 				33DF87B61DD3400100538D3A /* AppDelegate.swift in Sources */,
+				2344BB4A218DF494008CA621 /* UIWindow+TopViewController.swift in Sources */,
 				33DF87E01DD3428F00538D3A /* ViewController.swift in Sources */,
 				33DF87DC1DD3428F00538D3A /* CityListViewController.swift in Sources */,
 			);

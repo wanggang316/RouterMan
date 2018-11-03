@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, URLRoutable {
+class UserViewController: UIViewController {
 
 
     // MARK: - URLRoutable
@@ -16,9 +16,9 @@ class UserViewController: UIViewController, URLRoutable {
         self.init()
         print(url)
     }
-    required convenience init(_ parameters: [String : Any]) {
+    required convenience init(_ parameters: [String : Any]?) {
         self.init()
-        print("init parameters: \(parameters)")
+        print("init parameters: \(String(describing: parameters))")
     }
     
     required init() {
@@ -44,10 +44,6 @@ class UserViewController: UIViewController, URLRoutable {
 extension UserViewController: RoutableControllerType {
     static var pattern: String {
         return "abc://page/user/\\d+"
-    }
-    
-    func steupController(_ parameters: [String : Any]) {
-        print("parameters: \(parameters)")
     }
     
 //    convenience init(_ parameters: [String: Any]) {

@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         "abc://page/cities",
         "abc://page/city/123?name=beijing",
         "abc://page/user/124",
+        "abc://page/story/1?a=FooStory",
+        "http://www.iguanyu.com/story/1?a=FooStory",
         "tel:12345678",
         "abc://alert?title=title&message=messsage"
     ]
@@ -55,7 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.items[indexPath.row]
 
-        URLRouter.default.handle(item)
+        Router.default.handle(item, navigationController: self.navigationController!)
 //        let hasHander = URLRouter.default.open(item)
 //        if !hasHander {
 //            URLRouter.default.push(item, from: self.navigationController!)

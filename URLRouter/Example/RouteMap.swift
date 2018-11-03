@@ -11,8 +11,9 @@ import UIKit
 struct RouteMap {
     static func initialize() {
         
-        URLRouter.default.registe(UserViewController.self)
-        URLRouter.default.registe(StoryViewController.self)
+        Router.default.registe(UserViewController.self)
+        Router.default.registe(StoryViewController.self)
+        Router.default.registe(AlertRouteType.self)
         
 //        URLRouter.default.map("abc://page/cities", routable: CityListViewController.self)
 //        URLRouter.default.map("abc://page/city/\\d+\\?name=\\w+", routable: CityViewController.self)
@@ -42,5 +43,27 @@ struct RouteMap {
 //        })
         
     }
+    
+}
+
+class AlertRouteType: RoutableHandlerType {
+    static func handle(_ parameters: [String: Any]?) -> Bool {
+        print("parameters \(String(describing: parameters))")
+        let title = parameters?["title"] as? String
+        let message = parameters?["message"] as? String
+
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
+
+        let appdelegate = UIApplication.shared.delegate as? AppDelegate
+        appdelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+
+        return true
+    }
+    
+    static var pattern: String {
+        return "abc://alert\\?title=\\w+&message=\\w+"
+    }
+    
     
 }

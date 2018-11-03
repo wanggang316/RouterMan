@@ -10,10 +10,14 @@ import UIKit
 
 class StoryViewController: UIViewController {
 
+    @IBOutlet weak var storyNameLabel: UILabel!
+    
+    var storyName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.storyNameLabel.text = storyName
     }
     
 
@@ -34,6 +38,13 @@ extension StoryViewController: RoutableStoryboardControllerType {
         return "abc://page/story/\\d+\\?a=\\w+"
     }
     
+    static var rewritablePatterns: [String: URLRewriteHandler]? {
+        let handler: URLRewriteHandler = { sourceURL in
+            return "abc://page/story/234?a=newstory"
+        }
+        return ["http://www.iguanyu.com/story/\\d+\\?a=\\w+": handler]
+    }
+    
     static var storyboardName: String {
         return "Main"
     }
@@ -42,8 +53,9 @@ extension StoryViewController: RoutableStoryboardControllerType {
         return "StoryViewController"
     }
     
-    func steupController(_ parameters: [String : Any]) {
-        print("story parameters: \(parameters)")
+    func initViewController(_ parameters: [String : Any]?) {
+        print("story parameters: \(String(describing: parameters))")
+        self.storyName = parameters?["a"] as? String
     }
     
     

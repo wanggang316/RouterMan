@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, URLRoutable {
+class CityListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     lazy var tableView: UITableView = {
@@ -33,7 +33,6 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
     convenience required init?(url: URLConvertible) {
         self.init()
         print(url)
-
     }
     
     init() {
@@ -74,7 +73,7 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.items[indexPath.row]
         
-        URLRouter.default.push(item, from: self.navigationController!)
+//        URLRouter.default.push(item, from: self.navigationController!)
     }
 
 }
