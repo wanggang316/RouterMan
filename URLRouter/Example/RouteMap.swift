@@ -13,44 +13,23 @@ struct RouteMap {
         
         Router.default.registe(UserViewController.self)
         Router.default.registe(StoryViewController.self)
-        Router.default.registe(AlertRouteType.self)
+        Router.default.registe(AlertActionRoute.self)
+        Router.default.registe(OpenPhoneActionRoute.self)
         
-//        URLRouter.default.map("abc://page/cities", routable: CityListViewController.self)
+        Router.default.registe(CityListViewController.self)
 //        URLRouter.default.map("abc://page/city/\\d+\\?name=\\w+", routable: CityViewController.self)
 //        URLRouter.default.map("abc://page/topic\\?id=\\d", routable: TopicViewController.self)
 //        URLRouter.default.map("abc://page/user/\\d+", routable: UserViewController.self)
-//
-//        URLRouter.default.map("tel:[^\\s]+", handler: { (url) in
-//            print("------> \(url)")
-//            UIApplication.shared.openURL(url.urlValue!)
-//            return true
-//        })
-//
-//        URLRouter.default.map("abc://alert\\?title=\\w+&message=\\w+", handler: { (url) in
-//
-//            print("------> \(url)")
-//            let params = url.urlValue?.queryParameters
-//            let title = params?["title"]
-//            let message = params?["message"]
-//
-//            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
-//
-//            let appdelegate = UIApplication.shared.delegate as? AppDelegate
-//            appdelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
-//
-//            return true
-//        })
         
     }
     
 }
 
-class AlertRouteType: RoutableHandlerType {
-    static func handle(_ parameters: [String: Any]?) -> Bool {
-        print("parameters \(String(describing: parameters))")
-        let title = parameters?["title"] as? String
-        let message = parameters?["message"] as? String
+class AlertActionRoute: RoutableActionType {
+    static func handle(_ url: URLConvertible) -> Bool {
+        print("parameters \(String(describing: url.urlStringValue))")
+        let title = url.urlValue?.queryParameters["title"]
+        let message = url.urlValue?.queryParameters["message"]
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
@@ -64,6 +43,20 @@ class AlertRouteType: RoutableHandlerType {
     static var pattern: String {
         return "abc://alert\\?title=\\w+&message=\\w+"
     }
+}
+
+class OpenPhoneActionRoute: RoutableActionType {
+    static func handle(_ url: URLConvertible) -> Bool {
+        if let url = url.urlValue {
+             return UIApplication.shared.openURL(url)
+        }
+        return false
+    }
+    
+    static var pattern: String {
+        return "tel:[^\\s]+"
+    }
     
     
 }
+

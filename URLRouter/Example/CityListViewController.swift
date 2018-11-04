@@ -28,11 +28,10 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
         "abc://page/city/6?name=london",
         "abc://page/city/7?name=oxford"
     ]
+
     
-    // MARK: - URLRoutable
-    convenience required init?(url: URLConvertible) {
+    required convenience init(_ url: URLConvertible) {
         self.init()
-        print(url)
     }
     
     init() {
@@ -45,6 +44,9 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "cities"
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeAction))
+        
         self.view.backgroundColor = UIColor.groupTableViewBackground
         self.view.addSubview(self.tableView)
     }
@@ -54,7 +56,14 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Actions
+    
+    @objc func closeAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -69,11 +78,23 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.items[indexPath.row]
         
-//        URLRouter.default.push(item, from: self.navigationController!)
+        Router.default.handle(item)
     }
 
+}
+
+extension CityListViewController: RoutableControllerType {
+    static var pattern: String {
+        return "abc://page/cities"
+    }
+    
+    var segueKind: SegueKind {
+        return .present(wrap: true, animated: true)
+    }
+    
 }

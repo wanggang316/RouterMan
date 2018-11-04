@@ -16,24 +16,13 @@ class StoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.storyNameLabel.text = storyName
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension StoryViewController: RoutableStoryboardControllerType {
+    
     static var pattern: String {
         return "abc://page/story/\\d+\\?a=\\w+"
     }
@@ -53,9 +42,9 @@ extension StoryViewController: RoutableStoryboardControllerType {
         return "StoryViewController"
     }
     
-    func initViewController(_ parameters: [String : Any]?) {
-        print("story parameters: \(String(describing: parameters))")
-        self.storyName = parameters?["a"] as? String
+    func initViewController(_ url: URLConvertible) {
+        print("story parameters: \(String(describing: url.urlStringValue))")
+        self.storyName = url.urlValue?.queryParameters["a"]
     }
     
     

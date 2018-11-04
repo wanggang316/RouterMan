@@ -12,20 +12,16 @@ class UserViewController: UIViewController {
 
 
     // MARK: - URLRoutable
-    convenience required init?(url: URLConvertible) {
+    convenience required init(_ url: URLConvertible) {
         self.init()
-        print(url)
-    }
-    required convenience init(_ parameters: [String : Any]?) {
-        self.init()
-        print("init parameters: \(String(describing: parameters))")
+        print("init parameters: \(String(describing: url.urlStringValue))")
     }
     
     required init() {
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
