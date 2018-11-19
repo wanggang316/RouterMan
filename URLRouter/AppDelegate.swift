@@ -17,6 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         RouteMap.initialize()
+        
+//        let template = URITemplate(template: "https://api.github.com/repos/{owner}/{repo}/")
+//        let url = template.expand(["owner": "kylef", "repo": "URITemplate.swift"])
+//        print("-----> url is \(url)")
+//        let variables = template.variables
+//        print("-----> variables is \(variables)")
+//
+//        let vs = template.extract("https://api.github.com/repos/kylef/PathKit/")
+//        print("-----> vs is \(vs)")
+//
+//        let result = template.extractionRegex?.matches("https://api.github.com/repos/1/123/")
+//        print("-----> \(result)")
+        
         return true
     }
 

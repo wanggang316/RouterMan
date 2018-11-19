@@ -6,13 +6,28 @@
 //  Copyright © 2018 GUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public typealias URLRewriteHandler = (_ url: URLConvertible) -> URLConvertible
 
 public enum SegueKind {
+    
     case push(animated: Bool)
     case present(wrap: Bool, animated: Bool)
+    
+    func showViewController(_ controller: UIViewController) {
+        switch self {
+        case .push(let animated):
+            UIWindow.topViewController()?.present(controller, animated: animated, completion: nil)
+        case .present(let wrap, let animated):
+            if wrap {
+                let navController = UINavigationController.init(rootViewController: controller)
+                UIWindow.topViewController()?.present(navController, animated: animated, completion: nil)
+            } else {
+                UIWindow.topViewController()?.present(controller, animated: animated, completion: nil)
+            }
+        }
+    }
 }
 
 // MARK: - Routable protocols
@@ -32,6 +47,7 @@ public protocol RoutableStoryboardControllerType: RoutableType {
     static var identifier: String { get }
     func initViewController(_ url: URLConvertible)
     var segueKind: SegueKind { get }
+
 }
 
 public protocol RoutableActionType: RoutableType {
