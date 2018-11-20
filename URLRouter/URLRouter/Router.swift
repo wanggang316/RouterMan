@@ -1,9 +1,9 @@
 //
 //  Router.swift
-//  nys
+//  URLRouter
 //
 //  Created by wanggang on 08/11/2016.
-//  Copyright © 2016 ZBJ. All rights reserved.
+//  Copyright © 2016 GUM. All rights reserved.
 //
 
 import UIKit
@@ -41,7 +41,10 @@ open class Router {
 
     /// Mapping a url to target url in routeMap
     /// URLRewriteHandler is convert closure
-    private(set) var rewriteRouteMap = [String: URLRewriteHandler]()
+    private(set) var rewriteURLMap = [String: URLRewriteHandler]()
+    
+    /// Matcher for url and routable type
+    public let matcher = URLMatcher()
     
     /// Default instance
     public static var `default`: Router = Router()
@@ -56,7 +59,7 @@ open class Router {
                 guard !key.isEmpty else {
                     fatalError(RouterError.invalidPattern.description)
                 }
-                rewriteRouteMap[key] = value
+                rewriteURLMap[key] = value
             }
         }
         self.routeMap[routableType.pattern] = routableType
@@ -73,7 +76,7 @@ open class Router {
 
     open func handle(_ url: URLConvertible) throws {
         
-        guard let routableType = routableType(for: url) else {
+        guard let routableType = matcher.routableType(for: url, from: routeMap, and: rewriteURLMap) else {
             throw RouterError.noMatchRoute
         }
         
@@ -86,9 +89,8 @@ open class Router {
                 }
             }
         } else if let routableType = routableType as? RoutableStoryboardControllerType.Type {
-
-            let storyboard = UIStoryboard(name: routableType.storyboardName, bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: routableType.identifier)
+            
+            let controller = routableType.controller()
             
             if let routableController = controller as? RoutableStoryboardControllerType {
                 routableController.initViewController(url)
@@ -99,45 +101,6 @@ open class Router {
             routableType.handle(url)
         }
     }
-    
-    // MARK: - Private Methods
-    
-    /// Get routable type from routeMap or rewriteRouteMap
-    private func routableType(for url: URLConvertible) -> RoutableType.Type? {
-        
-        var routableType: RoutableType.Type?
-
-        let result = self.routeMap.keys.filter {
-            self.evaluate(forString: url.urlStringValue, withRegex: $0)
-        }
-        
-        if result.isEmpty {
-            let result = self.rewriteRouteMap.keys.filter {
-                self.evaluate(forString: url.urlStringValue, withRegex: $0)
-            }
-            if let key = result.first {
-                if let rewriteHandler = self.rewriteRouteMap[key] {
-                    let newURL = rewriteHandler(url)
-                    return self.routableType(for: newURL)
-                }
-            }
-        } else {
-            if let key = result.first {
-                routableType = self.routeMap[key]
-            }
-        }
-        return routableType
-    }
-}
-
-// MARK: - Extensions
-
-extension Router {
-    
-    /// Regular validation
-    func evaluate(forString string: String, withRegex regex: String) -> Bool {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        return predicate.evaluate(with: string)
-    }
+ 
 }
 

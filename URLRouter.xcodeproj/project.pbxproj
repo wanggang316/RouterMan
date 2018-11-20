@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2331275A21A2E88D0024514F /* URITemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331275921A2E88D0024514F /* URITemplate.swift */; };
+		2331275C21A433AA0024514F /* URLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331275B21A433AA0024514F /* URLMatcher.swift */; };
 		2344BB46218DE8E2008CA621 /* RoutableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB45218DE8E2008CA621 /* RoutableType.swift */; };
 		2344BB48218DF1DA008CA621 /* URLRewriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB47218DF1DA008CA621 /* URLRewriter.swift */; };
 		2344BB4A218DF494008CA621 /* UIWindow+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		2331275921A2E88D0024514F /* URITemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URITemplate.swift; sourceTree = "<group>"; };
+		2331275B21A433AA0024514F /* URLMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMatcher.swift; sourceTree = "<group>"; };
 		2344BB45218DE8E2008CA621 /* RoutableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutableType.swift; sourceTree = "<group>"; };
 		2344BB47218DF1DA008CA621 /* URLRewriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRewriter.swift; sourceTree = "<group>"; };
 		2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+TopViewController.swift"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				33DF87D21DD3426A00538D3A /* URLConvertible.swift */,
 				2344BB47218DF1DA008CA621 /* URLRewriter.swift */,
 				2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */,
+				2331275B21A433AA0024514F /* URLMatcher.swift */,
 			);
 			path = URLRouter;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23BC7AD12185826200A31E30 /* StoryViewController.swift in Sources */,
+				2331275C21A433AA0024514F /* URLMatcher.swift in Sources */,
 				33DF87DF1DD3428F00538D3A /* UserViewController.swift in Sources */,
 				33DF87E41DD3440F00538D3A /* CityViewController.swift in Sources */,
 				2344BB48218DF1DA008CA621 /* URLRewriter.swift in Sources */,

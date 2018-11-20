@@ -76,3 +76,11 @@ extension RoutableStoryboardControllerType {
         return .push(animated: true)
     }
 }
+
+extension StoryboardControllerType {
+    static func controller() -> UIViewController {
+        let storyboard = UIStoryboard(name: Self.storyboardName, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: Self.identifier)
+        return controller
+    }
+}
