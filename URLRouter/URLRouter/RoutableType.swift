@@ -10,6 +10,8 @@ import UIKit
 
 public typealias URLRewriteHandler = (_ url: URLConvertible) -> URLConvertible
 
+// MARK: - Controller show style
+
 public enum SegueKind {
     
     case push(animated: Bool)
@@ -18,7 +20,7 @@ public enum SegueKind {
     func showViewController(_ controller: UIViewController) {
         switch self {
         case .push(let animated):
-            UIWindow.topViewController()?.present(controller, animated: animated, completion: nil)
+            UIWindow.topViewController()?.navigationController?.pushViewController(controller, animated: animated)
         case .present(let wrap, let animated):
             if wrap {
                 let navController = UINavigationController.init(rootViewController: controller)
@@ -42,12 +44,14 @@ public protocol RoutableControllerType: RoutableType {
     var segueKind: SegueKind { get }
 }
 
-public protocol RoutableStoryboardControllerType: RoutableType {
+public protocol StoryboardControllerType {
     static var storyboardName: String { get }
     static var identifier: String { get }
+}
+
+public protocol RoutableStoryboardControllerType: RoutableType, StoryboardControllerType {
     func initViewController(_ url: URLConvertible)
     var segueKind: SegueKind { get }
-
 }
 
 public protocol RoutableActionType: RoutableType {

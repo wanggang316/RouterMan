@@ -83,7 +83,7 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.items[indexPath.row]
         
-        Router.default.handle(item)
+        try? Router.default.handle(item)
     }
 
 }

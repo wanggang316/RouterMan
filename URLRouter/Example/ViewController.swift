@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.deselectRow(at: indexPath, animated: true)
         let item = self.items[indexPath.row]
 
-        Router.default.handle(item)
+        try? Router.default.handle(item)
 //        let hasHander = URLRouter.default.open(item)
 //        if !hasHander {
 //            URLRouter.default.push(item, from: self.navigationController!)

@@ -8,10 +8,39 @@
 
 import UIKit
 
+enum RouterError: Error {
+    case invalidPattern
+    case schemeNotRecognized
+    case noMatchRoute
+}
+
+extension RouterError: CustomStringConvertible, CustomDebugStringConvertible {
+
+    var description: String {
+        switch self {
+        case .invalidPattern:
+            return "invalidPattern"
+        case .schemeNotRecognized:
+            return "schemeNotRecognized"
+        case .noMatchRoute:
+            return "noMatchRoute"
+        }
+    }
+    
+    var debugDescription: String {
+        return description
+    }
+}
+
+
 open class Router {
     
+    /// This dictionary is a mapping from URL to RoutableType.
+    /// The key is URL, value is the corresponding RoutableType.
     private(set) var routeMap = [String: RoutableType.Type]()
 
+    /// Mapping a url to target url in routeMap
+    /// URLRewriteHandler is convert closure
     private(set) var rewriteRouteMap = [String: URLRewriteHandler]()
     
     /// Default instance
@@ -19,16 +48,21 @@ open class Router {
     
     // MARK: - Registe
     
+    /// Registe single RoutableType
     open func registe(_ routableType: RoutableType.Type) {
         
         if let rewritablePatterns = routableType.rewritablePatterns {
             for (key, value) in rewritablePatterns {
+                guard !key.isEmpty else {
+                    fatalError(RouterError.invalidPattern.description)
+                }
                 rewriteRouteMap[key] = value
             }
         }
         self.routeMap[routableType.pattern] = routableType
     }
     
+    /// Registe multiple RoutableType
     open func registe(_ routableTypes: [RoutableType.Type]) {
         for routableType in routableTypes {
             self.registe(routableType)
@@ -37,11 +71,10 @@ open class Router {
     
     // MARK: - Handle
 
-    open func handle(_ url: URLConvertible) {
+    open func handle(_ url: URLConvertible) throws {
         
         guard let routableType = routableType(for: url) else {
-            print("routableType not found")
-            return
+            throw RouterError.noMatchRoute
         }
         
         if let routableType = routableType as? RoutableControllerType.Type {
@@ -64,12 +97,12 @@ open class Router {
             }
         } else if let routableType = routableType as? RoutableActionType.Type {
             routableType.handle(url)
-        } else {
-
         }
     }
     
-
+    // MARK: - Private Methods
+    
+    /// Get routable type from routeMap or rewriteRouteMap
     private func routableType(for url: URLConvertible) -> RoutableType.Type? {
         
         var routableType: RoutableType.Type?
@@ -95,9 +128,9 @@ open class Router {
         }
         return routableType
     }
-    
 }
 
+// MARK: - Extensions
 
 extension Router {
     

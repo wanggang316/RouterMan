@@ -9,18 +9,14 @@
 import UIKit
 
 struct RouteMap {
+    
     static func initialize() {
         
         Router.default.registe(UserViewController.self)
         Router.default.registe(StoryViewController.self)
         Router.default.registe(AlertActionRoute.self)
         Router.default.registe(OpenPhoneActionRoute.self)
-        
         Router.default.registe(CityListViewController.self)
-//        URLRouter.default.map("abc://page/city/\\d+\\?name=\\w+", routable: CityViewController.self)
-//        URLRouter.default.map("abc://page/topic\\?id=\\d", routable: TopicViewController.self)
-//        URLRouter.default.map("abc://page/user/\\d+", routable: UserViewController.self)
-        
     }
     
 }
