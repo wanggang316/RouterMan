@@ -32,8 +32,10 @@ extension RouterError: CustomStringConvertible, CustomDebugStringConvertible {
     }
 }
 
+/// Convert other url to route url
 public typealias URLRewriteHandler = (_ url: URLConvertible) -> URLConvertible
 
+/// Router for registe a routable type and handle url
 open class Router {
     
     /// This dictionary is a mapping from URL to RoutableType.
@@ -102,6 +104,5 @@ open class Router {
             routableType.handle(url)
         }
     }
- 
 }
 

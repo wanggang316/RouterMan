@@ -11,6 +11,7 @@ import UIKit
 
 // MARK: - Controller show style
 
+/// Contoller show style, default based top viewController.
 public enum SegueKind {
     
     case push(animated: Bool)
@@ -33,30 +34,40 @@ public enum SegueKind {
 
 // MARK: - Routable protocols
 
+/// Routable base protocol, routable type contains class, struct or enum must inherit this protocol.
 public protocol RoutableType {
     static var pattern: String { get }
     static var rewritablePatterns: [String: URLRewriteHandler]? { get }
 }
 
+/// Routable controller protocol
+/// Routable UIViewController base code should implement this protocol
 public protocol RoutableControllerType: RoutableType {
     init(_ url: URLConvertible)
     var segueKind: SegueKind { get }
 }
 
+/// Storyboard controller protocol
+/// UIViewController based storyboard should implement this protocol
 public protocol StoryboardControllerType {
     static var storyboardName: String { get }
     static var identifier: String { get }
 }
 
+/// Routable storyboard controller protocol, implement this method for your controller initialization.
 public protocol RoutableStoryboardControllerType: RoutableType, StoryboardControllerType {
     func initViewController(_ url: URLConvertible)
     var segueKind: SegueKind { get }
 }
 
+/// Routable action protocol, you can implement this protocol custom your routable action
 public protocol RoutableActionType: RoutableType {
     @discardableResult
     static func handle(_ url: URLConvertible) -> Bool
 }
+
+
+// MARK: - Default implements
 
 extension RoutableType {
     static var rewritablePatterns: [String: URLRewriteHandler]? { 
