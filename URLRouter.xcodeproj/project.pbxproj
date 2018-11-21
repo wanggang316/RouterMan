@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2331275A21A2E88D0024514F /* URITemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331275921A2E88D0024514F /* URITemplate.swift */; };
 		2331275C21A433AA0024514F /* URLMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331275B21A433AA0024514F /* URLMatcher.swift */; };
 		2344BB46218DE8E2008CA621 /* RoutableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB45218DE8E2008CA621 /* RoutableType.swift */; };
 		2344BB4A218DF494008CA621 /* UIWindow+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */; };
@@ -27,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2331275921A2E88D0024514F /* URITemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URITemplate.swift; sourceTree = "<group>"; };
 		2331275B21A433AA0024514F /* URLMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMatcher.swift; sourceTree = "<group>"; };
 		2344BB45218DE8E2008CA621 /* RoutableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutableType.swift; sourceTree = "<group>"; };
 		2344BB49218DF494008CA621 /* UIWindow+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+TopViewController.swift"; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 		33DF87D11DD3426A00538D3A /* URLRouter */ = {
 			isa = PBXGroup;
 			children = (
-				2331275921A2E88D0024514F /* URITemplate.swift */,
 				33DF87D31DD3426A00538D3A /* Router.swift */,
 				2344BB45218DE8E2008CA621 /* RoutableType.swift */,
 				33DF87D21DD3426A00538D3A /* URLConvertible.swift */,
@@ -201,7 +198,6 @@
 				33DF87B61DD3400100538D3A /* AppDelegate.swift in Sources */,
 				2344BB4A218DF494008CA621 /* UIWindow+TopViewController.swift in Sources */,
 				33DF87E01DD3428F00538D3A /* ViewController.swift in Sources */,
-				2331275A21A2E88D0024514F /* URITemplate.swift in Sources */,
 				33DF87DC1DD3428F00538D3A /* CityListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
