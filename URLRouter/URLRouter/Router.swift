@@ -32,6 +32,7 @@ extension RouterError: CustomStringConvertible, CustomDebugStringConvertible {
     }
 }
 
+public typealias URLRewriteHandler = (_ url: URLConvertible) -> URLConvertible
 
 open class Router {
     
@@ -90,7 +91,7 @@ open class Router {
             }
         } else if let routableType = routableType as? RoutableStoryboardControllerType.Type {
             
-            let controller = routableType.controller()
+            let controller = routableType.instance()
             
             if let routableController = controller as? RoutableStoryboardControllerType {
                 routableController.initViewController(url)

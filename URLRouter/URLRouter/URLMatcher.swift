@@ -14,8 +14,8 @@ open class URLMatcher {
     
     /// Get routable type from routeMap or rewriteRouteMap
     func routableType(for url: URLConvertible,
-                              from routeMap: [String: RoutableType.Type],
-                              and rewriteURLMap: [String: URLRewriteHandler]) -> RoutableType.Type? {
+                      from routeMap: [String: RoutableType.Type],
+                      and rewriteURLMap: [String: URLRewriteHandler]) -> RoutableType.Type? {
         
         var routableType: RoutableType.Type?
         

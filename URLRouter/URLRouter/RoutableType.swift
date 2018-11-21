@@ -8,7 +8,6 @@
 
 import UIKit
 
-public typealias URLRewriteHandler = (_ url: URLConvertible) -> URLConvertible
 
 // MARK: - Controller show style
 
@@ -78,7 +77,12 @@ extension RoutableStoryboardControllerType {
 }
 
 extension StoryboardControllerType {
-    static func controller() -> UIViewController {
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+    
+    static func instance() -> UIViewController {
         let storyboard = UIStoryboard(name: Self.storyboardName, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: Self.identifier)
         return controller
