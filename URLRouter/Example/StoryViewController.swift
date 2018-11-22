@@ -23,15 +23,9 @@ class StoryViewController: UIViewController {
 
 extension StoryViewController: RoutableStoryboardControllerType {
     
-    static var pattern: String {
-        return "abc://page/story/\\d+\\?a=\\w+"
-    }
-    
-    static var rewritablePatterns: [String: URLRewriteHandler]? {
-        let handler: URLRewriteHandler = { sourceURL in
-            return "abc://page/story/234?a=newstory"
-        }
-        return ["http://www.iguanyu.com/story/\\d+\\?a=\\w+": handler]
+    static var patterns: [String] {
+        return ["abc://page/story/\\d+\\?a=\\w+",
+                "http://www.iguanyu.com/story/\\d+\\?a=\\w+"]
     }
     
     static var storyboardName: String {

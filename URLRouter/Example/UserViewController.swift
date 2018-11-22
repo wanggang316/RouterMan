@@ -38,8 +38,8 @@ class UserViewController: UIViewController {
 }
 
 extension UserViewController: RoutableControllerType {
-    static var pattern: String {
-        return "abc://page/user/\\d+"
+    static var patterns: [String] {
+        return ["abc://page/user/\\d+"]
     }
     
 //    convenience init(_ parameters: [String: Any]) {

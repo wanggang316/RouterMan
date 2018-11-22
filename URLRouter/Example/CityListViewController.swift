@@ -89,8 +89,8 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
 }
 
 extension CityListViewController: RoutableControllerType {
-    static var pattern: String {
-        return "abc://page/cities"
+    static var patterns: [String] {
+        return ["abc://page/cities"]
     }
     
     var segueKind: SegueKind {

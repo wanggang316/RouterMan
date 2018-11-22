@@ -36,8 +36,8 @@ class AlertActionRoute: RoutableActionType {
         return true
     }
     
-    static var pattern: String {
-        return "abc://alert\\?title=\\w+&message=\\w+"
+    static var patterns: [String] {
+        return ["abc://alert\\?title=\\w+&message=\\w+"]
     }
 }
 
@@ -49,10 +49,8 @@ class OpenPhoneActionRoute: RoutableActionType {
         return false
     }
     
-    static var pattern: String {
-        return "tel:[^\\s]+"
+    static var patterns: [String] {
+        return ["tel:[^\\s]+"]
     }
-    
-    
 }
 

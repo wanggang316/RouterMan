@@ -36,19 +36,18 @@ public enum SegueKind {
 
 /// Routable base protocol, routable type contains class, struct or enum must inherit this protocol.
 public protocol RoutableType {
-    static var pattern: String { get }
-    static var rewritablePatterns: [String: URLRewriteHandler]? { get }
+    static var patterns: [String] { get }
 }
 
 /// Routable controller protocol
-/// Routable UIViewController base code should implement this protocol
+/// Routable UIViewController base code should implement this protocol.
 public protocol RoutableControllerType: RoutableType {
     init(_ url: URLConvertible)
     var segueKind: SegueKind { get }
 }
 
 /// Storyboard controller protocol
-/// UIViewController based storyboard should implement this protocol
+/// UIViewController based storyboard should implement this protocol.
 public protocol StoryboardControllerType {
     static var storyboardName: String { get }
     static var identifier: String { get }
@@ -68,12 +67,6 @@ public protocol RoutableActionType: RoutableType {
 
 
 // MARK: - Default implements
-
-extension RoutableType {
-    static var rewritablePatterns: [String: URLRewriteHandler]? { 
-        return nil
-    }
-}
 
 extension RoutableControllerType {
     var segueKind: SegueKind {

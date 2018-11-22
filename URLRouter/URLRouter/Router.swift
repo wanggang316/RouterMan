@@ -32,19 +32,12 @@ extension RouterError: CustomStringConvertible, CustomDebugStringConvertible {
     }
 }
 
-/// Convert other url to route url
-public typealias URLRewriteHandler = (_ url: URLConvertible) -> URLConvertible
-
 /// Router for registe a routable type and handle url
 open class Router {
     
     /// This dictionary is a mapping from URL to RoutableType.
     /// The key is URL, value is the corresponding RoutableType.
     private(set) var routeMap = [String: RoutableType.Type]()
-
-    /// Mapping a url to target url in routeMap
-    /// URLRewriteHandler is convert closure
-    private(set) var rewriteURLMap = [String: URLRewriteHandler]()
     
     /// Matcher for url and routable type
     public let matcher = URLMatcher()
@@ -56,16 +49,12 @@ open class Router {
     
     /// Registe single RoutableType
     open func registe(_ routableType: RoutableType.Type) {
-        
-        if let rewritablePatterns = routableType.rewritablePatterns {
-            for (key, value) in rewritablePatterns {
-                guard !key.isEmpty else {
-                    fatalError(RouterError.invalidPattern.description)
-                }
-                rewriteURLMap[key] = value
+        for pattern in routableType.patterns {
+            guard !pattern.isEmpty else {
+                fatalError(RouterError.invalidPattern.description)
             }
+            self.routeMap[pattern] = routableType
         }
-        self.routeMap[routableType.pattern] = routableType
     }
     
     /// Registe multiple RoutableType
@@ -79,7 +68,7 @@ open class Router {
 
     open func handle(_ url: URLConvertible) throws {
         
-        guard let routableType = matcher.routableType(for: url, from: routeMap, and: rewriteURLMap) else {
+        guard let routableType = matcher.routableType(for: url, from: routeMap) else {
             throw RouterError.noMatchRoute
         }
         
