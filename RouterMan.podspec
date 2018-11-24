@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
   s.name         = "RouterMan"
   s.version      = "1.0"
-  s.summary      = "A lightweight swift URL manager based regular expressions."
+  s.summary      = "A lightweight, extensible Swift URL Router."
   s.homepage     = "https://github.com/wanggang316/RouterMan"
 
   s.license      = "MIT"
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
 
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "10.0"
 
   s.source       = { :git => "https://github.com/wanggang316/RouterMan.git", :tag => s.version }
 
