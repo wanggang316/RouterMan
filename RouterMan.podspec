@@ -1,10 +1,10 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "URLRouter"
-  s.version      = "0.0.1"
+  s.name         = "RouterMan"
+  s.version      = "1.0"
   s.summary      = "A lightweight swift URL manager based regular expressions."
-  s.homepage     = "https://github.com/wanggang316/URLRouter"
+  s.homepage     = "https://github.com/wanggang316/RouterMan"
 
   s.license      = "MIT"
 
@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/wanggang316/URLRouter.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/wanggang316/RouterMan.git", :tag => s.version }
 
-  s.source_files  = "URLRouter/URLRouter/*.swift"
+  s.source_files  = "RouterMan/RouterMan/*.swift"
 
 
 end
