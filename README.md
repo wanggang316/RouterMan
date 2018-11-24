@@ -45,7 +45,7 @@ It's simple to use RouterMan, implement `RoutableType` based protocol for your c
 ```Swift
 class CityViewController: UIViewController: RoutableControllerType {
     
-	static var patterns: [String] {
+    static var patterns: [String] {
         return ["abc://page/cities/\\d+\\?name=\\w+"]
     }
     
@@ -63,7 +63,7 @@ class CityViewController: UIViewController: RoutableControllerType {
 ``` swift
 extension StoryViewController: RoutableStoryboardControllerType {
     
-	static var patterns: [String] {
+    static var patterns: [String] {
         return ["abc://page/stories/\\d+\\?name=\\S+",
                 "http://www.xxx.com/stories/\\d+\\?name=\\w+"]
     }
