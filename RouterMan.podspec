@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
 
   s.author             = { "gump" => "gummpwang@gmail.com" }
-  s.social_media_url   = "http://twitter.com/wgang316"
+  s.social_media_url   = "https://twitter.com/wgang316"
 
 
 
