@@ -1,5 +1,5 @@
 
-## RouterMan [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/wanggang316/URLRouter/master/LICENSE) [![Cocoapods](https://img.shields.io/cocoapods/v/URLRouter.svg)](https://cocoapods.org/?q=zbjcALENDAR)  
+## RouterMan [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/wanggang316/URLRouter/master/LICENSE) [![Cocoapods](https://img.shields.io/cocoapods/v/RouterMan.svg)](https://cocoapods.org/?q=zbjcALENDAR)  
 
 
 > RouterMan is a protocol-oriented url router,  base on regular expressions. RouterMan is simple and extensible.
@@ -61,11 +61,9 @@ class CityViewController: UIViewController: RoutableControllerType {
 * RoutableStoryboardControllerType
 
 ``` swift
-// MARK: - RoutableStoryboardControllerType
-
 extension StoryViewController: RoutableStoryboardControllerType {
     
-    static var patterns: [String] {
+	static var patterns: [String] {
         return ["abc://page/stories/\\d+\\?name=\\S+",
                 "http://www.xxx.com/stories/\\d+\\?name=\\w+"]
     }
@@ -79,7 +77,6 @@ extension StoryViewController: RoutableStoryboardControllerType {
     }
     
     func initViewController(_ url: URLConvertible) {
-        print("story parameters: \(String(describing: url.urlStringValue))")
         self.storyId = url.urlValue?.pathComponents.last
         self.storyName = url.urlValue?.queryParameters["name"]
     }
