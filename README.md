@@ -1,75 +1,133 @@
 
-## ZBJCalendar [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/wanggang316/URLRouter/master/LICENSE) [![Cocoapods](https://img.shields.io/cocoapods/v/URLRouter.svg)](https://cocoapods.org/?q=zbjcALENDAR)  
+## RouterMan [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/wanggang316/URLRouter/master/LICENSE) [![Cocoapods](https://img.shields.io/cocoapods/v/URLRouter.svg)](https://cocoapods.org/?q=zbjcALENDAR)  
 
 
-> URLRouter is a url manager based regular expressions, it is inspired by [URLNavigator](https://github.com/devxoul/URLNavigator). But i don't like the `URLMatcher` in `URLNavigator`. I like regular expressions which is smaller but stronger.
-
-> Thanks [devxoul](https://github.com/devxoul) for the excellent projects he opend.
+> RouterMan is a protocol-oriented url router,  base on regular expressions. RouterMan is simple and extensible.
 
 
 ## Requirements
 
- * iOS 8 or later
+ * iOS 10 or later
+ * Swift 4
+
+##Features 
+
+- [x] Regular expressions support
+- [x] Storyboard controller support，you can open a storyboard based controller easily
+- [x] Mutable source urls to a target behavior
+- [x] Mutable transitions support
+
+
 
 ## Installation with CocoaPods
-`pod 'URLRouter'`
+`pod 'RouterMan'`
 
 ## Installation with Carthage
-`github "wanggang316/URLRouter"`
+`github "wanggang316/RouterMan"`
 
 
 ## Useage
 
-### Registe
+It's simple to use RouterMan, implement `RoutableType` based protocol for your controller or other types, then registe it to RouteMan, done.
 
-* Registe a class which is implements the `URLRoutable` protocol
+`RoutableType` is routable base protocol, it derivative three protocols
 
-``` swift
-URLRouter.default.map("abc://page/city/\\d+\\?name=\\w+", routable: CityViewController.self)
-URLRouter.default.map("abc://page/user/\\d+", routable: UserViewController.self)
+* `RoutableControllerType`
+* `RoutableStoryboardControllerType`
+* `RoutableActionType`
+
+
+
+#### Config RoutableType
+
+* RoutableControllerType
+
+```Swift
+class CityViewController: UIViewController: RoutableControllerType {
+    
+	static var patterns: [String] {
+        return ["abc://page/cities/\\d+\\?name=\\w+"]
+    }
+    
+    required convenience init(_ url: URLConvertible) {
+        self.init()
+        let params = url.urlValue?.queryParameters
+        let title = params?["name"]
+        self.title = title
+    }
+}
 ```
 
-* Registe a handler closure
+* RoutableStoryboardControllerType
 
 ``` swift
-URLRouter.default.map("tel:[^\\s]+", handler: { (url) in
-    UIApplication.shared.open(url.urlValue!)
-    return true
-})
+// MARK: - RoutableStoryboardControllerType
 
-URLRouter.default.map("abc://alert\\?title=\\w+&message=\\w+", handler: { (url) in
-
-    let params = url.urlValue?.queryParameters
-    let title = params?["title"]
-    let message = params?["message"]
+extension StoryViewController: RoutableStoryboardControllerType {
     
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
+    static var patterns: [String] {
+        return ["abc://page/stories/\\d+\\?name=\\S+",
+                "http://www.xxx.com/stories/\\d+\\?name=\\w+"]
+    }
     
-    let appdelegate = UIApplication.shared.delegate as? AppDelegate
-    appdelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    static var storyboardName: String {
+        return "Main"
+    }
     
-    return true
-})
+    static var identifier: String {
+        return "StoryViewController"
+    }
+    
+    func initViewController(_ url: URLConvertible) {
+        print("story parameters: \(String(describing: url.urlStringValue))")
+        self.storyId = url.urlValue?.pathComponents.last
+        self.storyName = url.urlValue?.queryParameters["name"]
+    }
+}
 ```
 
-### Handle url
+* RoutableActionType
 
-* handler via push or present action
+```Swift
+class AlertActionRouter: RoutableActionType {
+    static func handle(_ url: URLConvertible) -> Bool {
+        let title = url.urlValue?.queryParameters["title"]
+        let message = url.urlValue?.queryParameters["message"]
 
-``` swift
-URLRouter.default.push(url, from: self.navigationController!)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
+
+        let appdelegate = UIApplication.shared.delegate as? AppDelegate
+        appdelegate?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+
+        return true
+    }
+    
+    static var patterns: [String] {
+        return ["abc://alert\\?title=\\w+&message=\\w+"]
+    }
+}
 ```
 
-* handle via the closure
+
+
+#### Registe
+
+```Swift
+Router.default.registe(CityViewController.self)
+Router.default.registe(StoryViewController.self)
+Router.default.registe(AlertActionRouter.self)
+```
+
+#### Handle
 
 ``` swift
-URLRouter.default.open(url)
+try? Router.default.handle(url)
 ```
 
 ## License
 
-URLRouter is released under the MIT license.
+RouterMan is released under the MIT license.
 
 
 

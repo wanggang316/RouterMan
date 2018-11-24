@@ -8,9 +8,9 @@
 
 import UIKit
 
-// MARK: - Controller show style
+// MARK: - Controller transition style
 
-/// Contoller show style, default based top viewController.
+/// Contoller transition style, default based top viewController.
 public enum SegueKind {
     
     case push(animated: Bool)

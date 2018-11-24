@@ -25,7 +25,7 @@ class StoryViewController: UIViewController {
 
 }
 
-// MARK: - RoutableControllerType
+// MARK: - RoutableStoryboardControllerType
 
 extension StoryViewController: RoutableStoryboardControllerType {
     

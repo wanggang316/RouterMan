@@ -14,15 +14,15 @@ struct RouteMap {
         
         Router.default.registe(UserViewController.self)
         Router.default.registe(StoryViewController.self)
-        Router.default.registe(AlertActionRoute.self)
-        Router.default.registe(OpenPhoneActionRoute.self)
+        Router.default.registe(AlertActionRouter.self)
+        Router.default.registe(OpenPhoneActionRouter.self)
         Router.default.registe(CityListViewController.self)
         Router.default.registe(CityViewController.self)
     }
 
 }
 
-class AlertActionRoute: RoutableActionType {
+class AlertActionRouter: RoutableActionType {
     static func handle(_ url: URLConvertible) -> Bool {
         print("parameters \(String(describing: url.urlStringValue))")
         let title = url.urlValue?.queryParameters["title"]
@@ -42,7 +42,7 @@ class AlertActionRoute: RoutableActionType {
     }
 }
 
-class OpenPhoneActionRoute: RoutableActionType {
+class OpenPhoneActionRouter: RoutableActionType {
     static func handle(_ url: URLConvertible) -> Bool {
         if let url = url.urlValue {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
