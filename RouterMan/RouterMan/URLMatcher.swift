@@ -12,6 +12,15 @@ open class URLMatcher {
     
     public init() { }
     
+    func routableType(for url: URLConvertible,
+                      lowRouteMap: [String: RoutableType.Type],
+                      normalRouteMap: [String: RoutableType.Type],
+                      highRouteMap: [String: RoutableType.Type]) -> RoutableType.Type? {
+        return self.routableType(for: url, from: highRouteMap)
+            ?? self.routableType(for: url, from: normalRouteMap)
+            ?? self.routableType(for: url, from: lowRouteMap)
+    }
+    
     /// Get routable type from routeMap or rewriteRouteMap
     func routableType(for url: URLConvertible,
                       from routeMap: [String: RoutableType.Type]) -> RoutableType.Type? {
@@ -36,4 +45,3 @@ open class URLMatcher {
         return predicate.evaluate(with: string)
     }
 }
-

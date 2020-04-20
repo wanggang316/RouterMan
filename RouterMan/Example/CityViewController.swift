@@ -10,7 +10,7 @@ import UIKit
 
 class CityViewController: UIViewController {
     
-    // MARK: -
+    // MARK:
     
     required convenience init(_ url: URLConvertible) {
         self.init()
@@ -46,5 +46,4 @@ extension CityViewController: RoutableControllerType {
     static var patterns: [String] {
         return ["abc://page/cities/\\d+\\?name=\\w+"]
     }
-    
 }

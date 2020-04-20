@@ -22,6 +22,7 @@
 		2331279421A92D2E0024514F /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331278821A92D2E0024514F /* StoryViewController.swift */; };
 		2331279521A92D2E0024514F /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331278921A92D2E0024514F /* CityViewController.swift */; };
 		2331279621A92D2E0024514F /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331278A21A92D2E0024514F /* UserViewController.swift */; };
+		23DCB300244DE2D8006FEA83 /* RouterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCB2FF244DE2D8006FEA83 /* RouterDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		2331278821A92D2E0024514F /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		2331278921A92D2E0024514F /* CityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		2331278A21A92D2E0024514F /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		23DCB2FF244DE2D8006FEA83 /* RouterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				2331277F21A92D2D0024514F /* URLMatcher.swift */,
 				2331277E21A92D2D0024514F /* URLConvertible.swift */,
 				2331278021A92D2D0024514F /* UIWindow+TopViewController.swift */,
+				23DCB2FF244DE2D8006FEA83 /* RouterDelegate.swift */,
 			);
 			path = RouterMan;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				2331276C21A92C6A0024514F /* AppDelegate.swift in Sources */,
 				2331279021A92D2E0024514F /* ViewController.swift in Sources */,
 				2331278E21A92D2E0024514F /* RoutableType.swift in Sources */,
+				23DCB300244DE2D8006FEA83 /* RouterDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

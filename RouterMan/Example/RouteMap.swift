@@ -8,10 +8,15 @@
 
 import UIKit
 
-struct RouteMap {
+class RouteMap {
     
-    static func initialize() {
-        
+    static let instance: RouteMap = RouteMap()
+    
+    init() {
+        Router.default.delegate = self
+    }
+    
+    func registe() {
         Router.default.registe(UserViewController.self)
         Router.default.registe(StoryViewController.self)
         Router.default.registe(AlertActionRouter.self)
@@ -19,8 +24,29 @@ struct RouteMap {
         Router.default.registe(CityListViewController.self)
         Router.default.registe(CityViewController.self)
     }
-
 }
+
+// MARK: - Router delegate
+
+extension RouteMap: RouterDelegate {
+    
+    func willShowController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind) {
+        print("Router willShowController")
+
+        switch segueKind {
+        case .push(_):
+            controller.hidesBottomBarWhenPushed = true
+            fromViewController.navigationItem.backBarButtonItem = .init(title: nil, style: .plain, target: nil, action: nil)
+        default: break
+        }
+    }
+    
+    func didShownController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind) {
+        print("Router didShownController")
+    }
+}
+
+// MARK: - Custom Routable Actions
 
 class AlertActionRouter: RoutableActionType {
     static func handle(_ url: URLConvertible) -> Bool {

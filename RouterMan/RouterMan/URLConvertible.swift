@@ -38,29 +38,18 @@ extension URL: URLConvertible {
     public var urlValue: URL? {
         return self
     }
-
+    
     public var urlStringValue: String {
         return self.absoluteString
     }
 }
 
-
 extension URL {
-    public var queryParameters: [String : String] {
-        var parameters = [String : String]()
-        self.urlValue?.query?.components(separatedBy: "&").forEach({
-            let keyAndValue = $0.components(separatedBy: "=")
-            if keyAndValue.count == 2 {
-                let key = keyAndValue[0]
-                let value = keyAndValue[1].replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? keyAndValue[1]
-                parameters[key] = value
-            }
-        })
+    public var queryParameters: [String: String] {
+        var parameters = [String: String]()
+        let urlComponent = URLComponents(url: self, resolvingAgainstBaseURL: false)
+        guard let queryItems = urlComponent?.queryItems else { return parameters }
+        queryItems.forEach { parameters[$0.name] = $0.value }
         return parameters
     }
 }
-
-
-
-
-

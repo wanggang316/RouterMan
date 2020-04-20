@@ -28,14 +28,14 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
         "abc://page/cities/7?name=oxford"
     ]
 
-    
     required convenience init(_ url: URLConvertible) {
         self.init()
     }
-    
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -84,7 +84,6 @@ class CityListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         try? Router.default.handle(item)
     }
-
 }
 
 // MARK: - RoutableControllerType
@@ -98,5 +97,4 @@ extension CityListViewController: RoutableControllerType {
     var segueKind: SegueKind {
         return .present(wrap: true, animated: true)
     }
-    
 }
