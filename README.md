@@ -8,7 +8,7 @@
 ## Requirements
 
  * iOS 10 or later
- * Swift 4
+ * Swift 5
 
 ##Features 
 
@@ -16,6 +16,7 @@
 - [x] Storyboard controller support，you can open a storyboard based controller easily
 - [x] Mutable source urls to a target behavior
 - [x] Mutable transitions support
+- [x] RouterDelegate support
 
 
 
@@ -106,7 +107,47 @@ class AlertActionRouter: RoutableActionType {
 }
 ```
 
+* RouterDelegate
+  * You can implement RouterDelegate globally
 
+    ```swift
+    Router.default.delegate = AClass()
+    
+    extension AClass: RouterDelegate {
+        func shouldShowController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind, shouldShow: @escaping (Bool) -> Void) {
+          // do something
+            shouldShow(true)
+        }
+        func willShowController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind) {
+            // do something
+        }
+        
+        func didShownController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind) {
+            // do something
+        }
+    }
+    ```
+
+  * Also, you can implement RouterDelegate locally in a `RoutableType`
+
+    ```swift
+    extension AViewController: RoutableTypeDelegate {
+        func shouldShowController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind, shouldShow: @escaping (Bool) -> Void) {
+          	let isAuthorized = ...
+          	shouldShow(isAuthorized)
+        }
+        
+        func willShowController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind) {
+            // do something
+        }
+        
+        func didShownController(_ controller: UIViewController, fromViewController: UIViewController, segueKind: SegueKind) {
+            // do something
+        }
+    }
+    ```
+
+    
 
 #### Registe
 
