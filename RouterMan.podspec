@@ -2,13 +2,13 @@
 Pod::Spec.new do |s|
 
   s.name         = "RouterMan"
-  s.version      = "1.0"
+  s.version      = "1.1.0"
   s.summary      = "A lightweight, extensible Swift URL Router."
   s.homepage     = "https://github.com/wanggang316/RouterMan"
 
   s.license      = "MIT"
 
-  s.author             = { "gump" => "gummpwang@gmail.com" }
+  s.author             = { "gump" => "gumpwang2016@gmail.com" }
   s.social_media_url   = "https://twitter.com/wgang316"
 
 
